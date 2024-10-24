@@ -4,19 +4,9 @@ on:
   push:
     branches:
       - "main"
-    paths:
-      - 'trainms/**'
-      - 'bookingms/**'
-      - 'paymentms/**'
-      - 'userms/**'
   pull_request:
     branches:
       - "main"
-    paths:
-      - 'trainms/**'
-      - 'bookingms/**'
-      - 'paymentms/**'
-      - 'userms/**'
 
 jobs:
   build:
@@ -25,7 +15,11 @@ jobs:
 
     strategy:
       matrix:
-        service: [trainms, bookingms, paymentms, userms]
+        service:
+          - { name: trainms, path: 'trainms/**' }
+          - { name: bookingms, path: 'bookingms/**' }
+          - { name: paymentms, path: 'paymentms/**' }
+          - { name: userms, path: 'userms/**' }
 
     steps:
     - uses: actions/checkout@v4
@@ -38,9 +32,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    # Build and test only for the changed microservice
-    - name: Build and Test ${{ matrix.service }}
-      if: contains(github.event.head_commit.message, '${{ matrix.service }}') || github.event_name == 'push' || github.event_name == 'pull_request'
+    # Only run the job if the corresponding microservice directory has changes
+    - name: Build and Test ${{ matrix.service.name }}
+      if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }} && (github.event.push.changes || github.event.pull_request.changes) && contains(github.event.commits.*.modified, matrix.service.path)
       run: |
-        cd ${{ matrix.service }}
+        cd ${{ matrix.service.name }}
         mvn -B package --file pom.xml
