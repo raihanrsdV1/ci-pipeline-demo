@@ -13,4 +13,8 @@ public class TestSomething {
         return "This is not a test";
     }
 
+    public String bruh(){
+        return "bruh";
+    }
+
 }
