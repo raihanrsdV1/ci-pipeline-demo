@@ -6,12 +6,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.4</version>
-		<relativePath/> <!-- lookup parent from repoitory -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tms</groupId>
-	<artifactId>trainms</artifactId>
+	<artifactId>bookingms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>trainms</name>
+	<name>bookingms</name>
 	<description>This is the train microservice</description>
 	<url/>
 	<licenses>
@@ -67,6 +67,11 @@
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
