@@ -8,4 +8,8 @@ public class TestSomething {
     public String addingNewTest(){
         return "Adding new test";
     }
+
+    public String helloNew(){
+        return "Hello new";
+    }
 }
