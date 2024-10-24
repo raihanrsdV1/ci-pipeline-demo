@@ -8,5 +8,9 @@ public class TestSomething {
     public String addingNewTest(){
         return "Adding new test";
     }
+    
+    public String ainnoway(){
+        return "This is not a test";
+    }
 
 }
