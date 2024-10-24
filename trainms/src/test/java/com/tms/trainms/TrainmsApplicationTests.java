@@ -12,6 +12,7 @@ class TrainmsApplicationTests {
 
 	@Test
 	void contextLoads() {
+        String message = "Train Microservice Test";
 	}
 
 	@Test
