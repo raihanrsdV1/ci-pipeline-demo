@@ -9,7 +9,4 @@ public class TestSomething {
         return "Adding new test";
     }
 
-    public String helloNew(){
-        return "Hello new";
-    }
 }
